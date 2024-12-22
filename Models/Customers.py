@@ -2,12 +2,15 @@ from pydantic import BaseModel, EmailStr
 from sqlmodel import SQLModel,Field
 
 class CustomerBase(SQLModel):
-    name: str = Field(max_length=100)
-    email: EmailStr | None = Field(max_length=100)
-    phone: str | None = Field(max_length=20)
-    address: str | None = Field(max_length=100)
+    name: str = Field(default=None, max_length=100)
+    email: EmailStr | None = Field(default=None,max_length=100)
+    phone: str | None = Field(default=None,max_length=20)
+    address: str | None = Field(default=None,max_length=100)
 
 class CustomerCreate(CustomerBase):
+    pass
+
+class CustomerUpdate(CustomerBase):
     pass
 
 class Customer(CustomerBase, table=True):
